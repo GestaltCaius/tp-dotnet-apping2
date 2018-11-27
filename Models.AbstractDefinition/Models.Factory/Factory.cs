@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Configuration;
+
 namespace MyAirport.Pim.Models
 
 {

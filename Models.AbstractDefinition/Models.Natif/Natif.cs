@@ -8,13 +8,16 @@ namespace MyAirport.Pim.Models
     {
         public override BagageDefinition GetBagage(int idBagage)
         {
-            throw new NotImplementedException();
+            var bagageDefinition = new BagageDefinition();
+            bagageDefinition.IdBagage = idBagage;
+
+            return bagageDefinition;
         }
 
         public override List<BagageDefinition> GetBagage(string codeIataBagage)
         {
 
-            throw new NotImplementedException();
+            return new List<BagageDefinition>();
         }
     }
 }

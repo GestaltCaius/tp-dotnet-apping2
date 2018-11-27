@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models.Natif", "Models.Abst
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models.Factory", "Models.AbstractDefinition\Models.Factory\Models.Factory.csproj", "{9EBC1DF4-FB33-4E73-BF70-42CC92C8D2A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.FormIhm", "Client.FormIhm\Client.FormIhm.csproj", "{6C274877-872E-4118-B1C3-1FCF1A75417B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{9EBC1DF4-FB33-4E73-BF70-42CC92C8D2A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EBC1DF4-FB33-4E73-BF70-42CC92C8D2A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EBC1DF4-FB33-4E73-BF70-42CC92C8D2A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C274877-872E-4118-B1C3-1FCF1A75417B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C274877-872E-4118-B1C3-1FCF1A75417B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C274877-872E-4118-B1C3-1FCF1A75417B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C274877-872E-4118-B1C3-1FCF1A75417B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B8B8FB8A-FFD8-446B-AE7D-8B7EC05FD7F0} = {DB0AE422-333D-47E2-B7BB-A6FE044CCE2C}
