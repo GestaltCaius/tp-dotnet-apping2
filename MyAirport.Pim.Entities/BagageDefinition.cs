@@ -6,7 +6,6 @@ namespace MyAirport.Pim.Entities
     /// </summary>
     sealed public class BagageDefinition
     {
-
         public int IdBagage { get; set; } // Identifiant bagage en base de données permet l'identification unique d'un bagage
 
         public string CodeIata { get; set; } // Numéro du bagage présent sur l'étiquette
@@ -24,5 +23,10 @@ namespace MyAirport.Pim.Entities
         public bool EnContinuation { get; set; } // Si la destination est différente de l'itineraire, est-ce que le bagage doit être livré au passager au prochain arrêt?
 
         public bool Rush { get; set; } // Bagage sans passager (pour les bagages ayant ratés un vol)
+
+        public override string ToString()
+        {
+            return String.Format("{0} {1} {2}", IdBagage, CodeIata, Compagnie);
+        }
     }
 }

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Les informations générales relatives à un assembly dépendent de
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
-[assembly: AssemblyTitle("Client.FormIhm")]
+[assembly: AssemblyTitle("Models.Sql")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Client.FormIhm")]
+[assembly: AssemblyProduct("Models.Sql")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Le GUID suivant est pour l'ID de la typelib si ce projet est exposé à COM
-[assembly: Guid("207f688e-a0c1-4f17-8509-22c70a2e9f01")]
+[assembly: Guid("980c5f46-e18b-47e4-843f-e876dfeb3bd6")]
 
 // Les informations de version pour un assembly se composent des quatre valeurs suivantes :
 //

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -7,7 +7,8 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Models.Factory</RootNamespace>
     <AssemblyName>Models.Factory</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,6 +36,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Models.Sql\Models.Sql.csproj">
+      <Project>{980c5f46-e18b-47e4-843f-e876dfeb3bd6}</Project>
+      <Name>Models.Sql</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Models.AbstractDefinition.csproj">
       <Project>{B8B8FB8A-FFD8-446B-AE7D-8B7EC05FD7F0}</Project>
       <Name>Models.AbstractDefinition</Name>
