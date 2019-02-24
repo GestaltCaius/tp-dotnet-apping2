@@ -26,7 +26,7 @@ namespace MyAirport.Pim.Entities
 
         public override string ToString()
         {
-            return String.Format("TEST {0} {1} {2} {3} {4} {5} {6} {7} {8}", 
+            return String.Format("Bagage #{0} ({1}): {2} - {3} - {4} @ {5}. Prioritaire: {6}, continuation: {7}, rush: {8}", 
                 IdBagage, CodeIata, Compagnie, Ligne, DateVol, Itineraire, Prioritaire, EnContinuation, Rush);
         }
     }

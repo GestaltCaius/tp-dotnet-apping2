@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 
 
@@ -17,7 +18,9 @@ namespace MyAirport.Pim.Models
             "INNER JOIN BAGAGE_A_POUR_PARTICULARITE tmp ON tmp.ID_BAGAGE = b.ID_BAGAGE " + 
             "INNER JOIN BAGAGE_PARTICULARITE bp ON bp.ID_PART = tmp.ID_PARTICULARITE " +
             "INNER JOIN COMPAGNIE c ON c.CODE_IATA = b.COMPAGNIE " +
-            "WHERE b.CODE_IATA LIKE '%@iata%'";
+            // "WHERE b.CODE_IATA LIKE '%@iata%'"; TODO ask Cyril Cagnet why it does not work when we use @iata
+            "WHERE b.CODE_IATA LIKE ";
+
         string commandGetBagageId = "SELECT " +
             "b.ID_BAGAGE, b.CODE_IATA, c.NOM, b.LIGNE, b.DATE_CREATION, b.ESCALE, b.PRIORITAIRE, b.EN_CONTINUATION, cast(iif(bp.PARTICULARITE is null, 0, 1) as bit) as 'RUSH' " +
             "FROM BAGAGE b " +
@@ -25,6 +28,8 @@ namespace MyAirport.Pim.Models
             "INNER JOIN BAGAGE_PARTICULARITE bp ON bp.ID_PART = tmp.ID_PARTICULARITE " +
             "INNER JOIN COMPAGNIE c ON c.CODE_IATA = b.COMPAGNIE " +
             "WHERE b.ID_BAGAGE = @id";
+
+        string commandGetAllForTest = "SELECT * FROM BAGAGE";
 
 
         public override BagageDefinition GetBagage(int idBagage)
@@ -41,6 +46,7 @@ namespace MyAirport.Pim.Models
                 {
                     while (reader.Read())
                     {
+                        Console.WriteLine(reader["ID_BAGAGE"] + " " + reader["CODE_IATA"]);
                         bagRes = ReaderToBagage(reader);
                         Console.WriteLine(bagRes);
                     }
@@ -56,9 +62,10 @@ namespace MyAirport.Pim.Models
 
             using (SqlConnection cnx = new SqlConnection(strCnx))
             {
-                SqlCommand cmd = new SqlCommand(this.commandGetBagageIata, cnx);
-                cmd.Parameters.AddWithValue("@iata", codeIataBagage);
+                SqlCommand cmd = new SqlCommand(this.commandGetBagageIata + "'%" + codeIataBagage + "%'", cnx); // TODO ask Cyril Cagnet why addParameters @iata does not work !
+                //cmd.Parameters.AddWithValue("@iata", codeIataBagage);
                 cnx.Open();
+                Console.WriteLine(cmd.Transaction);
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -85,7 +92,6 @@ namespace MyAirport.Pim.Models
                 Rush = reader.GetBoolean(reader.GetOrdinal("RUSH")),
                 EnContinuation = reader.GetBoolean(reader.GetOrdinal("EN_CONTINUATION"))
             };
-
             int index = reader.GetOrdinal("ESCALE");
             if (!reader.IsDBNull(index))
                 bagRes.Itineraire = reader.GetString(index);
@@ -97,7 +103,6 @@ namespace MyAirport.Pim.Models
             index = reader.GetOrdinal("PRIORITAIRE");
             if (!reader.IsDBNull(index))
                 bagRes.Prioritaire = reader.GetBoolean(index);
-
             return bagRes;
         }
     }

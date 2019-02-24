@@ -16,8 +16,12 @@ namespace MyAirport.Pim.Models
 
         public override List<BagageDefinition> GetBagage(string codeIataBagage)
         {
-
-            return new List<BagageDefinition>();
+            var list = new List<BagageDefinition>();
+            for (int i = 42; i < 55; i++)
+            {
+                list.Add(this.GetBagage(i));
+            }
+            return list;
         }
     }
 }
