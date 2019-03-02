@@ -29,8 +29,8 @@ namespace MyAirport.Pim.Models
         string commandGetAllForTest = "SELECT * FROM BAGAGE";
 
         string commandInsertBagage = "INSERT " +
-        "INTO BAGAGE (CODE_IATA, COMPAGNIE, LIGNE, DATE_CREATION, ESCALE, PRIORITAIRE, EN_CONTINUATION) " +
-        "VALUES (@iata, @compagnie, @ligne, GETDATE(), @escale, @prioritaire, @en_continuation)";
+        "INTO BAGAGE (CODE_IATA, COMPAGNIE, LIGNE, DATE_CREATION, ESCALE, PRIORITAIRE, EN_CONTINUATION, JOUR_EXPLOITATION, ORIGINE_CREATION) " +
+        "VALUES (@iata, @compagnie, @ligne, GETDATE(), @escale, @prioritaire, @en_continuation, @jour_exploitation, @origine_creation)";
 
         public override void CreateBagage(BagageDefinition bagage) {
             using (SqlConnection cnx = new SqlConnection(strCnx))
@@ -42,6 +42,8 @@ namespace MyAirport.Pim.Models
                 cmd.Parameters.AddWithValue("@escale", bagage.Itineraire);
                 cmd.Parameters.AddWithValue("@prioritaire", bagage.Prioritaire);
                 cmd.Parameters.AddWithValue("@en_continuation", bagage.EnContinuation);
+                cmd.Parameters.AddWithValue("@jour_exploitation", 2);
+                cmd.Parameters.AddWithValue("@origine_creation", "D");
                 cnx.Open();
                 cmd.ExecuteNonQuery();
             }

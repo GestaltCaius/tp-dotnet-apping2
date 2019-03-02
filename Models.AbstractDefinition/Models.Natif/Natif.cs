@@ -6,6 +6,11 @@ namespace MyAirport.Pim.Models
 {
     public class Natif : AbstractDefinition
     {
+        public override void CreateBagage(BagageDefinition bagage)
+        {
+            throw new NotImplementedException(); // TODO test
+        }
+
         public override BagageDefinition GetBagage(int idBagage)
         {
             var bagageDefinition = new BagageDefinition();

@@ -25,13 +25,20 @@ namespace ClientCli
                 {
                     case 0:
                         // TODO create
-                        Console.WriteLine("Create luggage " + input);
-                        continue;
+                        BagageDefinition newBagage = readBagageAttributes();
+                        if (newBagage == null) // user quit
+                        {
+                            Console.WriteLine("$ Bagage creation canceled");
+                            continue;
+                        }
+                        model.CreateBagage(newBagage);
+                        Console.WriteLine("Created luggage " + input);
+                        break;
                     case 1:
                         Console.WriteLine(bagageList.First());
                         break;
                     default:
-                            Console.WriteLine("Several luggages have been found:");
+                        Console.WriteLine("Several luggages have been found:");
                         foreach (var bagage in bagageList)
                         {
                             Console.WriteLine("\t" + bagage); // TODO update toString() method
@@ -39,6 +46,40 @@ namespace ClientCli
                         break;
                 }
             }
+        }
+
+        private static BagageDefinition readBagageAttributes()
+        {
+            string iata = readInput("IATA? (ex: 23232342)");
+            string compagnie = readInput("Compagnie? (ex: UE)");
+            string ligne = readInput("Ligne? (ex: 7594)");
+            string escale = readInput("Escale? (ex: CDG)");
+            string prioritaire = readInput("Prioritaire? (0/1)");
+            string en_continuationion = readInput("En continuation? (0/1)");
+
+            BagageDefinition bagage = new BagageDefinition();
+            try
+            {
+                bagage.CodeIata = iata;
+                bagage.Compagnie = compagnie;
+                bagage.Ligne = ligne;
+                bagage.Itineraire = escale;
+                bagage.Prioritaire = Boolean.Parse(prioritaire);
+                bagage.EnContinuation = Boolean.Parse(en_continuationion);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+            return bagage;
+        }
+
+        private static string readInput(string instruction)
+        {
+            Console.WriteLine("$ " + instruction);
+            Console.Write("> ");
+            return Console.ReadLine();
         }
     }
 }
