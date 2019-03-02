@@ -26,8 +26,6 @@ namespace MyAirport.Pim.Models
             "INNER JOIN BAGAGE_PARTICULARITE bp ON bp.ID_PART = tmp.ID_PARTICULARITE " +
             "WHERE b.ID_BAGAGE = @id";
 
-        string commandGetAllForTest = "SELECT * FROM BAGAGE";
-
         string commandInsertBagage = "INSERT " +
         "INTO BAGAGE (CODE_IATA, COMPAGNIE, LIGNE, DATE_CREATION, ESCALE, PRIORITAIRE, EN_CONTINUATION, JOUR_EXPLOITATION, ORIGINE_CREATION) " +
         "VALUES (@iata, @compagnie, @ligne, GETDATE(), @escale, @prioritaire, @en_continuation, @jour_exploitation, @origine_creation)";
