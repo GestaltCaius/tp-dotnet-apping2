@@ -5,8 +5,9 @@
 
 # How to use
 
-Nous avons fait le choix d'une interface en ligne de commande (CLI).
-Nous étions parti sur un Windows Form, mais étant tous deux sous UNIX, il nous était difficile de continuer seuls dans cette direction.
+Nous avons fait le choix d'une interface en ligne de commande (CLI), comme vous nous aviez laissé le choix entre une interface Console ou Windows Form lors du premier cours.
+
+Nous étions parti sur un Windows Form, mais, étant tous deux sous UNIX, il nous était difficile de continuer seuls dans cette direction.
 
 La CLI permet de rechercher des bagages via leur code IATA, et d'en créer un dans le cas où la recherche ne renvoie aucun résultat.
 
