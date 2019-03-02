@@ -32,7 +32,7 @@ namespace ClientCli
                             continue;
                         }
                         model.CreateBagage(newBagage);
-                        Console.WriteLine("Created luggage " + input);
+                        Console.WriteLine("Created luggage " + newBagage.CodeIata);
                         break;
                     case 1:
                         Console.WriteLine(bagageList.First());
@@ -41,7 +41,7 @@ namespace ClientCli
                         Console.WriteLine("Several luggages have been found:");
                         foreach (var bagage in bagageList)
                         {
-                            Console.WriteLine("\t" + bagage); // TODO update toString() method
+                            Console.WriteLine("    * " + bagage + "\n");
                         }
                         break;
                 }
@@ -54,8 +54,8 @@ namespace ClientCli
             string compagnie = readInput("Compagnie? (ex: UE)");
             string ligne = readInput("Ligne? (ex: 7594)");
             string escale = readInput("Escale? (ex: CDG)");
-            string prioritaire = readInput("Prioritaire? (0/1)");
-            string en_continuationion = readInput("En continuation? (0/1)");
+            string prioritaire = readInput("Prioritaire? (Y/N)");
+            string en_continuationion = readInput("En continuation? (Y/N)");
 
             BagageDefinition bagage = new BagageDefinition();
             try
@@ -64,8 +64,8 @@ namespace ClientCli
                 bagage.Compagnie = compagnie;
                 bagage.Ligne = ligne;
                 bagage.Itineraire = escale;
-                bagage.Prioritaire = Boolean.Parse(prioritaire);
-                bagage.EnContinuation = Boolean.Parse(en_continuationion);
+                bagage.Prioritaire = prioritaire == "Y" ? true : false;
+                bagage.EnContinuation = en_continuationion == "Y" ? true : false;
             }
             catch (Exception)
             {

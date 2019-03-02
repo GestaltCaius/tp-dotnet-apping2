@@ -82,14 +82,12 @@ namespace MyAirport.Pim.Models
                 SqlCommand cmd = new SqlCommand(this.commandGetBagageIata, cnx);
                 cmd.Parameters.AddWithValue("@iata", "%" + codeIataBagage + "%");
                 cnx.Open();
-                Console.WriteLine(cmd.Transaction);
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         var bagRes = ReaderToBagage(reader);
-                        Console.WriteLine(bagRes);
                         bagList.Add(bagRes);
                     }
                 }
